@@ -13,6 +13,18 @@ function Calculator() {
     setResult(Number(num1) - Number(num2));
   };
 
+  const handleMultiplication = () => {
+    setResult(Number(num1) * Number(num2));
+  };
+
+  const handleDivision = () => {
+    if (Number(num2) === 0) {
+      setResult('Cannot divide by zero');
+    } else {
+      setResult(Number(num1) / Number(num2));
+    }
+  };
+
   const styles = {
     container: {
       maxWidth: '400px',
@@ -34,7 +46,7 @@ function Calculator() {
     },
     button: {
       padding: '10px 20px',
-      margin: '10px',
+      margin: '10px 5px',
       borderRadius: '5px',
       border: 'none',
       backgroundColor: '#4CAF50',
@@ -44,6 +56,12 @@ function Calculator() {
     },
     buttonSecondary: {
       backgroundColor: '#2196F3',
+    },
+    buttonAlt: {
+      backgroundColor: '#FF9800',
+    },
+    buttonDanger: {
+      backgroundColor: '#f44336',
     },
     result: {
       marginTop: '20px',
@@ -72,6 +90,8 @@ function Calculator() {
       <div>
         <button onClick={handleAddition} style={styles.button}>Add</button>
         <button onClick={handleSubtraction} style={{ ...styles.button, ...styles.buttonSecondary }}>Subtract</button>
+        <button onClick={handleMultiplication} style={{ ...styles.button, ...styles.buttonAlt }}>Multiply</button>
+        <button onClick={handleDivision} style={{ ...styles.button, ...styles.buttonDanger }}>Divide</button>
       </div>
       {result !== null && <div style={styles.result}>Result: {result}</div>}
     </div>
